@@ -46,15 +46,15 @@ async def on_message(message):
             try:
                 await message.delete()
 
-                # Timeout de 10 minuto
+                # Timeout de 15 minutos
                 await message.author.timeout(
-                    timedelta(minutes=1),
+                    timedelta(minutes=15),
                     reason="Bromita"
                 )
 
                 await message.channel.send(
-                    f"{message.author.mention} :jeje: ",
-                    delete_after=4
+                    f"{message.author.mention} CAISTE AWEONAO WUAJAJA ",
+                    delete_after=1
                 )
 
             except Exception as e:
