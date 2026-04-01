@@ -22,7 +22,7 @@ def keep_alive():
 
 
 TOKEN = os.getenv("TOKEN")
-CANAL_ID = 1236226637490688034  # ID del canal donde quieres aplicar esto
+CANAL_ID = 1488724851429478450 # ID del canal donde quieres aplicar esto
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -48,7 +48,7 @@ async def on_message(message):
 
                 # Timeout de 10 minuto
                 await message.author.timeout(
-                    timedelta(minutes=1),
+                    timedelta(minutes=10),
                     reason="Bromita"
                 )
 
