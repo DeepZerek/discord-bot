@@ -3,6 +3,24 @@ from discord.ext import commands
 from datetime import timedelta
 import os
 
+# KEEP ALIVE (Flask)
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot activo"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
+
+
 TOKEN = os.getenv("TOKEN")
 CANAL_ID = 1236226637490688034  # ID del canal donde quieres aplicar esto
 
@@ -43,4 +61,8 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
+# INICIAR KEEP ALIVE
+keep_alive()
+
+# INICIAR BOT
 bot.run(TOKEN)
