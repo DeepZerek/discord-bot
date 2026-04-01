@@ -27,6 +27,7 @@ CANAL_ID = 1488724851429478450 # ID del canal donde quieres aplicar esto
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
+PALABRAS_PROHIBIDAS = ["nigger", "nigga", "niggeeer", "niggeer"]
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
@@ -38,11 +39,15 @@ async def on_message(message):
 
     # Solo actuar en el canal específico
     if message.channel.id == CANAL_ID:
+
+        mensaje = message.content.lower()
+
         tiene_link = "http://" in message.content or "https://" in message.content
         tiene_archivo = len(message.attachments) > 0
         tiene_sticker = len(message.stickers) > 0
+        tiene_palabra = any(p in mensaje for p in PALABRAS_PROHIBIDAS)
 
-        if tiene_link or tiene_archivo or tiene_sticker:
+        if tiene_link or tiene_archivo or tiene_sticker or tiene_palabra:
             try:
                 await message.delete()
 
