@@ -40,20 +40,21 @@ async def on_message(message):
     if message.channel.id == CANAL_ID:
         tiene_link = "http://" in message.content or "https://" in message.content
         tiene_archivo = len(message.attachments) > 0
+        tiene_sticker = len(message.stickers) > 0
 
-        if tiene_link or tiene_archivo:
+        if tiene_link or tiene_archivo or tiene_sticker:
             try:
                 await message.delete()
 
-                # Timeout de 10 minutos
+                # Timeout de 10 minuto
                 await message.author.timeout(
                     timedelta(minutes=1),
-                    reason="Enviar links o multimedia no permitido"
+                    reason="Bromita"
                 )
 
                 await message.channel.send(
-                    f"{message.author.mention} recibió timeout por enviar contenido no permitido.",
-                    delete_after=5
+                    f"{message.author.mention} WUAAJAJAJA CAISTE AWEONAO",
+                    delete_after=3
                 )
 
             except Exception as e:
