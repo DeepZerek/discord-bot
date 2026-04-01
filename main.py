@@ -40,6 +40,19 @@ async def on_message(message):
     # Solo actuar en el canal específico
     if message.channel.id == CANAL_ID:
 
+        if message.channel.id == CANAL_ID:
+            try:
+                await message.delete()
+
+                await message.author.timeout(
+                    timedelta(minutes=10),
+                    reason="No se permite enviar mensajes en este canal"
+                )
+
+
+            except Exception as e:
+                print(e)
+
         mensaje = message.content.lower()
 
         tiene_link = "http://" in message.content or "https://" in message.content
