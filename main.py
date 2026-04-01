@@ -53,7 +53,7 @@ async def on_message(message):
                 )
 
                 await message.channel.send(
-                    f"{message.author.mention} WUAJAJA AWEONAOOOOOOO CAISTE",
+                    f"{message.author.mention} :jeje: ",
                     delete_after=4
                 )
 
